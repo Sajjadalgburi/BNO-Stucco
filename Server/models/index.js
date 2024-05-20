@@ -1,5 +1,5 @@
 // Initiate all models here
-const form = require("./contactFormModal");
+const ContactForm = require("./contactFormModal");
 
 // Export all models
-module.exports = { form };
+module.exports = { ContactForm };

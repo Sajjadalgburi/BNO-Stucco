@@ -28,7 +28,7 @@ const contactFormSchema = new Schema({
   },
 });
 
-const form = model("ContactForm", contactFormSchema);
+const ContactForm = model("ContactForm", contactFormSchema);
 
 // create and export the model
-module.exports = form;
+module.exports = ContactForm;
