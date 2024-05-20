@@ -2,14 +2,24 @@
 const gql = require("graphql-tag");
 
 // typeDefs for the contact form
-
 const typeDefs = gql`
-  input ContactForm {
+  input ContactFormInput {
+    name: String!
+    email: String!
+    phone: String!
+    message: String!
+  }
+
+  type ContactForm {
     _id: ID!
     name: String!
     email: String!
     phone: String!
     message: String!
+  }
+
+  type Mutation {
+    addContactForm(contactForm: ContactFormInput): ContactForm
   }
 `;
 
