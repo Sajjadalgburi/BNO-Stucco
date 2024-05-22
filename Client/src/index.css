@@ -5,7 +5,7 @@
 /* add this color as seccondary color  */
 
 :root {
-  --color-secondary: #d1bda1;
+  --color-secondary: #bfa78e;
 }
 
 .hero {
@@ -25,4 +25,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.exterior {
+  color: var(--color-secondary);
+}
+
+.menu li:hover {
+  color: var(--color-secondary);
+  transition: color 0.4s ease; /* Add transition effect */
 }
