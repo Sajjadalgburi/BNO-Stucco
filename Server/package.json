@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "watch": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -11,8 +11,10 @@
   "description": "",
   "dependencies": {
     "@apollo/server": "^4.10.4",
+    "express": "^4.19.2",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
-    "mongoose": "^8.4.0"
+    "mongoose": "^8.4.0",
+    "nodemon": "^3.1.0"
   }
 }
