@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-    <div className=" navbar flex justify-between bg-base-100 p-5">
-      <Link to={'/'} className="btn btn-ghost text-2xl ml-48">
+    <div className="navbar flex justify-between bg-base-100 p-5">
+      <Link to={'/'} className="btn btn-ghost text-3xl ml-48">
         Brothers <span className="exterior">Exterior</span> Stucoo
       </Link>
 
