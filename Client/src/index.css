@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* add this color as seccondary color  */
+
+:root {
+  --color-secondary: #d1bda1;
+}
+
 .hero {
   background-image: url(../images/hero.jpg);
 
@@ -12,4 +18,11 @@
   /* add min height */
 
   min-height: 50vh;
+}
+
+.imagesForMaterials {
+  padding: 20px; /* Optional padding for better spacing */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
