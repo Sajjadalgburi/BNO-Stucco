@@ -1,5 +1,11 @@
-function App() {
-  return <h1>hi</h1>;
-}
+import Hero from './components/hero section/hero';
+import Navbar from './components/navbar';
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+    </>
+  );
+}
