@@ -18,6 +18,11 @@ const typeDefs = gql`
     message: String!
   }
 
+  ## this is a placeholder type to satisfy the GQL server
+  type Query {
+    _empty: String
+  }
+
   type Mutation {
     addContactForm(contactForm: ContactFormInput): ContactForm
   }
