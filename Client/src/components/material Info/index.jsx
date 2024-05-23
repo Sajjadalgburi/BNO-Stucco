@@ -4,10 +4,10 @@ const MaterialInfo = () => {
   return (
     <div className="materialInfo my-28">
       <div className="description">
-        <h1 className="text-5xl font-bold flex justify-center align-middle uppercase">
-          Materilas we Use
+        <h1 className=" text-4xl sm:text-6xl font-bold flex justify-center align-middle uppercase">
+          materials we Use
         </h1>
-        <p className="mt-4 w-auto text-center mx-24 text-lg">
+        <p className="mt-4 w-auto text-center mx-8 md:mx-24 text-md md:text-xl">
           At Brothers Exterior Stucco, we pride ourselves on delivering
           exceptional quality and customer satisfaction in every exterior stucco
           project we undertake. Our unwavering commitment to excellence drives
