@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import Instagram from '../links/Instagram';
+import FaceBook from '../links/Facebook';
 
 const Footer = () => {
   return (
@@ -23,6 +24,8 @@ const Footer = () => {
         <nav>
           <div className="grid grid-flow-col gap-4">
             <Instagram />
+
+            <FaceBook />
           </div>
         </nav>
 
