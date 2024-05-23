@@ -17,10 +17,11 @@
 
   /* add min height */
 
-  min-height: 50vh;
+  min-height: 80vh;
 }
 
-.imagesForMaterials {
+.imagesForMaterials,
+.imagesForHouseWork {
   padding: 20px; /* Optional padding for better spacing */
   display: flex;
   flex-wrap: wrap;
@@ -34,4 +35,21 @@
 .menu li:hover {
   color: var(--color-secondary);
   transition: color 0.4s ease; /* Add transition effect */
+}
+
+.gg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Add margin to the top */
+}
+
+.big-img {
+  height: 80vh;
+  width: 70%;
+}
+
+.welcome {
+  letter-spacing: 1rem;
 }
