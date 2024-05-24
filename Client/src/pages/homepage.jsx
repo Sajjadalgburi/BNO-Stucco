@@ -3,6 +3,7 @@
 import Hero from '../components/hero section/hero';
 import MaterialInfo from '../components/material Info';
 import ServicesProvided from '../components/servicesProvided';
+import HousesCarousel from '../components/Carousel';
 
 const Homepage = () => {
   return (
@@ -10,6 +11,7 @@ const Homepage = () => {
       <Hero />
       <MaterialInfo />
       <ServicesProvided />
+      <HousesCarousel />
     </div>
   );
 };
