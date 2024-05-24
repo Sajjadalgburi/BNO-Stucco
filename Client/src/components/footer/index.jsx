@@ -30,7 +30,7 @@ const Footer = () => {
         </nav>
 
         <aside>
-          <p>Copyright © 2024 - All right reserved by Cool Games Ltd</p>
+          <p>Copyright © 2024 - All right reserved by BNO Ltd</p>
         </aside>
       </footer>
     </div>
