@@ -17,16 +17,16 @@ const ServicesProvided = () => {
         </p>
       </div>
       <div className="avatar flex flex-wrap justify-center items-center mt-10 gap-4">
-        <div className="w-96 rounded m-2 flex-grow flex-shrink">
+        <div className="w-96 rounded m-2  flex-shrink">
           <img src="../images/house2.jpg" alt="house image" />
         </div>
-        <div className="w-96 rounded m-2 flex-grow flex-shrink">
+        <div className="w-96 rounded m-2  flex-shrink">
           <img src="../images/house3.jpg" alt="house image" />
         </div>
-        <div className="w-96 rounded m-2 flex-grow flex-shrink">
+        <div className="w-96 rounded m-2  flex-shrink">
           <img src="../images/house1.jpg" alt="house image" />
         </div>
-        <div className="w-96 rounded m-2 flex-grow flex-shrink">
+        <div className="w-96 rounded m-2  flex-shrink">
           <img src="../images/house4.jpg" alt="house image" />
         </div>
       </div>
