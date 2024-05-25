@@ -1,6 +1,6 @@
 const AboutUs = () => {
   return (
-    <div className="aboutUs my-44">
+    <div id="about-us" className="aboutUs my-44">
       <div className="mainHeading">
         <h1 className="text-4xl sm:text-6xl font-bold flex justify-center align-middle uppercase">
           About Us
