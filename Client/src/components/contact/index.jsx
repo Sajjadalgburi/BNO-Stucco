@@ -39,21 +39,49 @@ const Contact = () => {
       <div className="userForm w-3/4 xl:w-2/4">
         <label className="input input-bordered flex items-center gap-2 mb-4">
           Name
-          <input type="text" className="grow" placeholder="JaneDoe" />
+          <input
+            value={formData.name}
+            onChange={(e) => {
+              setFormData({ ...formData, name: e.target.value });
+            }}
+            type="text"
+            className="grow"
+            placeholder="JaneDoe"
+          />
         </label>
 
         <label className="input input-bordered flex items-center gap-2 mb-4">
           Email
-          <input type="text" className="grow" placeholder="janeDoe@site.com" />
+          <input
+            value={formData.email}
+            onChange={(e) => {
+              setFormData({ ...formData, email: e.target.value });
+            }}
+            type="text"
+            className="grow"
+            placeholder="janeDoe@site.com"
+          />
         </label>
 
         <label className="input input-bordered flex items-center gap-2 mb-4">
           Phone
-          <input type="text" className="grow" placeholder="123-456-7890" />
+          <input
+            value={formData.phone}
+            onChange={(e) => {
+              setFormData({ ...formData, phone: e.target.value });
+            }}
+            type="text"
+            className="grow"
+            placeholder="123-456-7890"
+          />
         </label>
 
         {/* Adjusted the height of the textarea and made the width full */}
         <textarea
+          value={formData.message}
+          onChange={(e) => {
+            setFormData({ ...formData, message: e.target.value });
+          }}
           className="h-48 w-full rounded p-2 mb-4"
           placeholder="Your Message"
         ></textarea>
