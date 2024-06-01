@@ -1,3 +1,11 @@
+const houseImages = [
+  'house0.jpg',
+  'house1.jpg',
+  'house2.jpg',
+  'house3.jpg',
+  'house4.jpg',
+];
+
 const ServicesProvided = () => {
   return (
     <div className="service my-44">
@@ -16,19 +24,16 @@ const ServicesProvided = () => {
           firsthand.
         </p>
       </div>
+
+      {/* looping through each house and giving them idential css styling to follow DRY principles */}
       <div className="avatar flex flex-wrap justify-center items-center mt-10 gap-4">
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house2.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house3.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house1.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house4.jpg" alt="house image" />
-        </div>
+        {houseImages.map((image, index) => {
+          return (
+            <div className="w-96 rounded m-2  flex-shrink" key={index}>
+              <img src={`/images/house-images/${image}`} alt="house image" />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
