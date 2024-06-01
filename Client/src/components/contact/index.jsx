@@ -1,4 +1,31 @@
+import { useState, useEffect } from 'react';
+import { useLazyQuery } from '@apollo/client';
+import { ADD_CONTACT_FORM } from '../../utils/queries';
+
+import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+
 const Contact = () => {
+  if (process.env.NODE_ENV) {
+    // Adds messages only in a dev environment
+    loadDevMessages();
+    loadErrorMessages();
+  }
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const [addContactForm, { loading, data, error }] =
+    useLazyQuery(ADD_CONTACT_FORM);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    addContactForm({ variables: { contactForm: formData } });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="py-24 welcomeSection text-center">
@@ -31,7 +58,9 @@ const Contact = () => {
           placeholder="Your Message"
         ></textarea>
 
-        <button className="btn w-full">Submit!</button>
+        <button onClick={handleFormSubmit} className="btn w-full">
+          Submit!
+        </button>
       </div>
     </div>
   );
