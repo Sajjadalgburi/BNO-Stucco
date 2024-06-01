@@ -1,4 +1,4 @@
-const { ContactForm } = require("../models");
+const { ContactForm } = require('../models');
 
 // Define the resolvers for the mutations
 const resolvers = {
@@ -8,8 +8,8 @@ const resolvers = {
       try {
         return await ContactForm.create(contactForm);
       } catch (err) {
-        console.error("Failed to create a contact form:", err);
-        throw new Error("Failed to create a contact form");
+        console.error('Failed to create a contact form:', err);
+        throw new Error('Failed to create a contact form');
       }
     },
   },
