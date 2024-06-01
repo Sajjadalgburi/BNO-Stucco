@@ -7,7 +7,7 @@ const HousesCarousel = () => {
           className="HousesCarousel carousel-item relative w-full"
         >
           <img
-            src="../images/house5.jpg"
+            src="/images/house-images/house5.jpg"
             alt="house image"
             className="w-full"
           />
@@ -22,7 +22,7 @@ const HousesCarousel = () => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
-            src="../images/house6.jpg"
+            src="/images/house-images/house6.jpg"
             alt="house image"
             className="w-full"
           />
@@ -37,7 +37,7 @@ const HousesCarousel = () => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <img
-            src="../images/house9.jpg"
+            src="/images/house-images/house9.jpg"
             alt="house image"
             className="w-full"
           />
@@ -52,7 +52,7 @@ const HousesCarousel = () => {
         </div>
         <div id="slide4" className="carousel-item relative w-full">
           <img
-            src="../images/house10.jpg"
+            src="/images/house-images/house10.jpg"
             alt="house image"
             className="w-full"
           />
