@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useLazyQuery } from '@apollo/client';
-import { ADD_CONTACT_FORM } from '../../utils/queries';
+import { useMutation } from '@apollo/client';
+import { ADD_CONTACT_FORM } from '../../utils/mutations';
 
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 
@@ -20,24 +20,46 @@ const Contact = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [addContactForm, { loading, data, error }] =
-    useLazyQuery(ADD_CONTACT_FORM);
+  const [addContactForm, { error }] = useMutation(ADD_CONTACT_FORM);
 
   const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
     return phoneRegex.test(phone);
   };
 
-  const handleFormSubmit = (e) => {
+  const formatPhoneNumber = (value) => {
+    // Remove all non-digit characters
+    const cleaned = ('' + value).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+    if (match) {
+      return (
+        (!match[2] ? match[1] : match[1] + '-' + match[2]) +
+        (match[3] ? '-' + match[3] : '')
+      );
+    }
+    return value;
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!validatePhoneNumber(formData.phone)) {
-      setErrorMessage(
-        'Please enter a valid phone number (e.g., 123-456-7890).',
-      );
+      setErrorMessage('Please enter a valid phone number');
       return;
     }
     setErrorMessage('');
-    addContactForm({ variables: { contactForm: formData } });
+
+    const { data } = await addContactForm({
+      variables: {
+        contactForm: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+      },
+    });
+
+    console.log(data);
   };
 
   return (
@@ -82,8 +104,11 @@ const Contact = () => {
           <input
             value={formData.phone}
             onChange={(e) => {
-              setFormData({ ...formData, phone: e.target.value });
+              const formattedPhone = formatPhoneNumber(e.target.value);
+              setFormData({ ...formData, phone: formattedPhone });
             }}
+            minLength={5}
+            maxLength={12}
             type="text"
             className="grow"
             placeholder="123-456-7890"
