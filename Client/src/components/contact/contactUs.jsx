@@ -5,7 +5,7 @@ import { ADD_CONTACT_FORM } from '../../utils/mutations';
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 
 const Contact = () => {
-  if (process.env.NODE_ENV) {
+  if (process.env.NODE_ENV === 'development') {
     // Adds messages only in a dev environment
     loadDevMessages();
     loadErrorMessages();
@@ -18,7 +18,12 @@ const Contact = () => {
     message: '',
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
   const [addContactForm, { error }] = useMutation(ADD_CONTACT_FORM);
 
@@ -40,13 +45,71 @@ const Contact = () => {
     return value;
   };
 
+  const validateName = (name) => {
+    const trimmedName = name.trim();
+    if (!trimmedName || trimmedName.length < 3) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        name: 'Please enter a valid name',
+      }));
+      return false;
+    }
+    const namePattern = /^[A-Za-z\s]+$/;
+    if (!namePattern.test(trimmedName)) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        name: 'Name can only contain letters and spaces',
+      }));
+      return false;
+    }
+    setErrorMessage((prev) => ({ ...prev, name: '' }));
+    return true;
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        email: 'Please enter a valid email address',
+      }));
+      return false;
+    }
+    setErrorMessage((prev) => ({ ...prev, email: '' }));
+    return true;
+  };
+
+  const validateMessage = (message) => {
+    if (!message.trim() || message.length < 10) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        message: 'Message must be at least 10 characters long',
+      }));
+      return false;
+    }
+    setErrorMessage((prev) => ({ ...prev, message: '' }));
+    return true;
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!validatePhoneNumber(formData.phone)) {
-      setErrorMessage('Please enter a valid phone number');
+
+    const isNameValid = validateName(formData.name);
+    const isEmailValid = validateEmail(formData.email);
+    const isPhoneValid = validatePhoneNumber(formData.phone);
+    const isMessageValid = validateMessage(formData.message);
+
+    if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+      if (!isPhoneValid) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          phone: 'Please enter a valid phone number',
+        }));
+      }
       return;
     }
-    setErrorMessage('');
+
+    setErrorMessage({ name: '', email: '', phone: '', message: '' });
 
     const { data } = await addContactForm({
       variables: {
@@ -85,6 +148,9 @@ const Contact = () => {
             placeholder="JaneDoe"
           />
         </label>
+        {errorMessage.name && (
+          <p className="text-red-500 mb-4">{errorMessage.name}</p>
+        )}
 
         <label className="input input-bordered flex items-center gap-2 mb-4">
           Email
@@ -98,6 +164,9 @@ const Contact = () => {
             placeholder="janeDoe@site.com"
           />
         </label>
+        {errorMessage.email && (
+          <p className="text-red-500 mb-4">{errorMessage.email}</p>
+        )}
 
         <label className="input input-bordered flex items-center gap-2 mb-4">
           Phone
@@ -114,8 +183,9 @@ const Contact = () => {
             placeholder="123-456-7890"
           />
         </label>
-
-        {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+        {errorMessage.phone && (
+          <p className="text-red-500 mb-4">{errorMessage.phone}</p>
+        )}
 
         <textarea
           value={formData.message}
@@ -125,6 +195,9 @@ const Contact = () => {
           className="h-48 w-full rounded p-2 mb-4"
           placeholder="Your Message"
         ></textarea>
+        {errorMessage.message && (
+          <p className="text-red-500 mb-4">{errorMessage.message}</p>
+        )}
 
         <button onClick={handleFormSubmit} className="btn w-full">
           Submit!
