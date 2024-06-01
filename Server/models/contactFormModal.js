@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const contactFormSchema = new Schema({
   // column field for user's name
@@ -11,14 +11,14 @@ const contactFormSchema = new Schema({
   email: {
     type: String,
     required: true,
-    match: [/.+\@.+\..+/, "Please enter a valid email address"],
+    match: [/.+\@.+\..+/, 'Please enter a valid email address'],
   },
 
   // user's phone number
   phone: {
     type: String,
     required: true,
-    match: [/^\+?[1-9]\d{1,14}$/, "Please enter a valid phone number"],
+    match: [/^\d{3}-\d{3}-\d{4}$/, 'Please enter a valid phone number'],
   },
 
   // user's message
@@ -28,7 +28,7 @@ const contactFormSchema = new Schema({
   },
 });
 
-const ContactForm = model("ContactForm", contactFormSchema);
+const ContactForm = model('ContactForm', contactFormSchema);
 
 // create and export the model
 module.exports = ContactForm;
