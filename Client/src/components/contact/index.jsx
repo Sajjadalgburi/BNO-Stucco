@@ -18,11 +18,25 @@ const Contact = () => {
     message: '',
   });
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   const [addContactForm, { loading, data, error }] =
     useLazyQuery(ADD_CONTACT_FORM);
 
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+    return phoneRegex.test(phone);
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (!validatePhoneNumber(formData.phone)) {
+      setErrorMessage(
+        'Please enter a valid phone number (e.g., 123-456-7890).',
+      );
+      return;
+    }
+    setErrorMessage('');
     addContactForm({ variables: { contactForm: formData } });
   };
 
@@ -76,7 +90,8 @@ const Contact = () => {
           />
         </label>
 
-        {/* Adjusted the height of the textarea and made the width full */}
+        {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+
         <textarea
           value={formData.message}
           onChange={(e) => {
