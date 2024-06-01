@@ -1,5 +1,7 @@
 // this componenet is to display the information of material used at the company
 
+import { Link } from 'react-router-dom';
+
 const MaterialInfo = () => {
   return (
     <div className="materialInfo my-28">
@@ -21,18 +23,22 @@ const MaterialInfo = () => {
       {/* this is the gird for the images  */}
       <div className="imagesForMaterials grid grid-cols-1 md:grid-cols-2 gap-10 justify-center items-center mt-10">
         <div className="durock" aria-label="Image for DuRock company">
-          <img
-            src="/images/material-imgs/durock.png"
-            alt="DuRock Company"
-            className="max-w-xs md:max-w-md object-contain"
-          />
+          <Link to={'https://durock.ca/'} target="_blank">
+            <img
+              src="/images/material-imgs/durock.png"
+              alt="DuRock Company"
+              className="max-w-xs md:max-w-md object-contain"
+            />
+          </Link>
         </div>
         <div className="adex" aria-label="Image for Adex company">
-          <img
-            src="/images/material-imgs/adex.webp"
-            alt="Adex Company"
-            className="max-w-xs md:max-w-md object-contain"
-          />
+          <Link to={'https://www.adex.ca/'} target="_blank">
+            <img
+              src="/images/material-imgs/adex.webp"
+              alt="Adex Company"
+              className="max-w-xs md:max-w-md object-contain"
+            />
+          </Link>
         </div>
       </div>
     </div>
