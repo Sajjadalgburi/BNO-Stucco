@@ -22,15 +22,15 @@ const MaterialInfo = () => {
       <div className="imagesForMaterials grid grid-cols-1 md:grid-cols-2 gap-10 justify-center items-center mt-10">
         <div className="durock" aria-label="Image for DuRock company">
           <img
-            src="/images/material-company-images/durock.png"
-            alt="DuRock"
+            src="/images/material-imgs/durock.png"
+            alt="DuRock Company"
             className="max-w-xs md:max-w-md object-contain"
           />
         </div>
         <div className="adex" aria-label="Image for Adex company">
           <img
-            src="/images/material-company-images/adex.webp"
-            alt="Adex"
+            src="/images/material-imgs/adex.webp"
+            alt="Adex Company"
             className="max-w-xs md:max-w-md object-contain"
           />
         </div>
