@@ -3,8 +3,8 @@
 import Hero from '../components/hero section/hero';
 import MaterialInfo from '../components/material Info';
 import ServicesProvided from '../components/servicesProvided';
-import HousesCarousel from '../components/Carousel';
 import AboutUs from '../components/about us';
+import HousesCarousel from '../components/carousel';
 
 const Homepage = () => {
   return (
