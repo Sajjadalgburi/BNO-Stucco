@@ -1,3 +1,12 @@
+const houseImages = [
+  'house11.jpg',
+  'house12.jpg',
+  'house13.jpg',
+  'house14.jpg',
+  'house15.jpg',
+  'house16.jpg',
+];
+
 const AboutUs = () => {
   return (
     <div id="about-us" className="aboutUs my-44">
@@ -22,24 +31,13 @@ const AboutUs = () => {
       </div>
 
       <div className="avatar flex flex-wrap justify-center items-center mt-10 gap-4">
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house11.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house12.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house13.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house14.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house15.jpg" alt="house image" />
-        </div>
-        <div className="w-96 rounded m-2  flex-shrink">
-          <img src="../images/house16.jpg" alt="house image" />
-        </div>
+        {houseImages.map((image, index) => {
+          return (
+            <div className="w-96 rounded m-2  flex-shrink" key={index}>
+              <img src={`/images/house-images/${image}`} alt="house image" />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
