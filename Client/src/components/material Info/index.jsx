@@ -6,7 +6,7 @@ const MaterialInfo = () => {
   return (
     <div className="materialInfo my-28">
       <div className="description">
-        <h1 className=" text-4xl sm:text-6xl font-bold flex justify-center align-middle uppercase">
+        <h1 className="text-3xl sm:text-6xl font-bold flex justify-center align-middle uppercase">
           materials we Use
         </h1>
         <p className="mt-4 w-auto text-center mx-8 md:mx-24 text-md md:text-xl">
