@@ -122,8 +122,6 @@ const Contact = () => {
           },
         },
       });
-
-      console.log(data);
     } catch (err) {
       console.error('Failed to submit contact form:', err);
     }
