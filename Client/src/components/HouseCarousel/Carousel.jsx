@@ -1,4 +1,4 @@
-const HousesCarousel = () => {
+export default async function Carousel() {
   return (
     <div className="flex justify-center">
       <div className="carousel w-8/12 md:w-5/12">
@@ -68,6 +68,4 @@ const HousesCarousel = () => {
       </div>
     </div>
   );
-};
-
-export default HousesCarousel;
+}

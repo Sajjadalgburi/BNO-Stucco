@@ -3,8 +3,8 @@
 import Hero from '../components/hero section/hero';
 import MaterialInfo from '../components/material Info';
 import ServicesProvided from '../components/servicesProvided';
-import AboutUs from '../components/about us';
-import HousesCarousel from '../components/carousel';
+import AboutUs from '../components/about-us';
+import Carousel from '../components/HouseCarousel/Carousel';
 
 const Homepage = () => {
   return (
@@ -12,7 +12,7 @@ const Homepage = () => {
       <Hero />
       <MaterialInfo />
       <ServicesProvided />
-      <HousesCarousel />
+      <Carousel />
       <AboutUs />
     </div>
   );
