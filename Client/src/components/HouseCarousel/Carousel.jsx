@@ -1,4 +1,4 @@
-export default async function Carousel() {
+export default function Carousel() {
   return (
     <div className="flex justify-center">
       <div className="carousel w-8/12 md:w-5/12">

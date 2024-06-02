@@ -92,37 +92,41 @@ const Contact = () => {
   };
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    const isNameValid = validateName(formData.name);
-    const isEmailValid = validateEmail(formData.email);
-    const isPhoneValid = validatePhoneNumber(formData.phone);
-    const isMessageValid = validateMessage(formData.message);
+      const isNameValid = validateName(formData.name);
+      const isEmailValid = validateEmail(formData.email);
+      const isPhoneValid = validatePhoneNumber(formData.phone);
+      const isMessageValid = validateMessage(formData.message);
 
-    if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
-      if (!isPhoneValid) {
-        setErrorMessage((prev) => ({
-          ...prev,
-          phone: 'Please enter a valid phone number',
-        }));
+      if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+        if (!isPhoneValid) {
+          setErrorMessage((prev) => ({
+            ...prev,
+            phone: 'Please enter a valid phone number',
+          }));
+        }
+        return;
       }
-      return;
-    }
 
-    setErrorMessage({ name: '', email: '', phone: '', message: '' });
+      setErrorMessage({ name: '', email: '', phone: '', message: '' });
 
-    const { data } = await addContactForm({
-      variables: {
-        contactForm: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
+      const { data } = await addContactForm({
+        variables: {
+          contactForm: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.message,
+          },
         },
-      },
-    });
+      });
 
-    console.log(data);
+      console.log(data);
+    } catch (err) {
+      console.error('Failed to submit contact form:', err);
+    }
   };
 
   return (
