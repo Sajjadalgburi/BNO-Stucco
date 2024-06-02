@@ -31,7 +31,7 @@ export default function Navbar() {
               </a>{' '}
             </li>
 
-            <li>
+            <li className="my-3">
               <Link to="/">Home</Link>
             </li>
 
