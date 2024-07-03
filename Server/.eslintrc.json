@@ -1,0 +1,40 @@
+{
+  "root": true,
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020 // Adjust ecmaVersion as necessary based on your project's ECMAScript version
+  },
+  "rules": {
+    "no-undef-init": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-extra-semi": "error",
+    "no-func-assign": "error",
+    "no-irregular-whitespace": "error",
+    "no-unreachable": "error",
+    "curly": ["error", "all"],
+    "dot-notation": "error",
+    "eqeqeq": "error",
+    "no-empty-function": "error",
+    "no-multi-spaces": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-trailing-spaces": "error",
+    "default-case": "error",
+    "no-fallthrough": "error",
+    "no-unused-vars": "error",
+    "no-use-before-define": "error",
+    "no-redeclare": "error",
+    // "brace-style": ["error", "1tbs", { "allowSingleLine": true }], // Remove or comment out this line
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "radix": "off",
+    "arrow-parens": ["error", "always"], // Ensure arrow functions have parentheses around parameters
+    "no-useless-escape": "off" // Disable unnecessary escape character rule
+  },
+  "extends": ["eslint:recommended", "prettier"]
+}
