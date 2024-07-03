@@ -7,7 +7,7 @@ const resolvers = {
   Query: {
     getHeroImages: async () => fetchImageFromFolder('hero-img'),
     getHouseImages: async () => fetchImageFromFolder('house-images'),
-    getMaterialImages: async () => fetchImageFromFolder('material-imgs'),
+    getMaterialImages: async () => fetchImageFromFolder('material-imgs')
   },
 
   Mutation: {
@@ -23,8 +23,8 @@ const resolvers = {
         console.error('Failed to create a contact form:', err);
         throw new Error('Failed to create a contact form');
       }
-    },
-  },
+    }
+  }
 };
 
 module.exports = resolvers;

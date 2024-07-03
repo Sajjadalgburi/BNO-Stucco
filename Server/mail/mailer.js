@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   auth: {
     // the users email and password for gmail
     user: process.env.ACCOUNT_EMAIL,
-    pass: process.env.ACCOUNT_PASS,
-  },
+    pass: process.env.ACCOUNT_PASS
+  }
 });
 
 // Function to send mail
@@ -27,7 +27,7 @@ const sendMail = async (to) => {
       <br/>
       <p>Best regards,</p>
       <p>The BNO Stucco Team</p>
-    `,
+    `
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

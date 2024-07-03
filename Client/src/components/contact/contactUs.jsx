@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_CONTACT_FORM } from '../../utils/mutations';
 
@@ -15,17 +15,17 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    message: '',
+    message: ''
   });
 
   const [errorMessage, setErrorMessage] = useState({
     name: '',
     email: '',
     phone: '',
-    message: '',
+    message: ''
   });
 
-  const [addContactForm, { error }] = useMutation(ADD_CONTACT_FORM);
+  const [addContactForm] = useMutation(ADD_CONTACT_FORM);
 
   const validatePhoneNumber = (phone) => {
     const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
@@ -50,7 +50,7 @@ const Contact = () => {
     if (!trimmedName || trimmedName.length < 3) {
       setErrorMessage((prev) => ({
         ...prev,
-        name: 'Please enter a valid name',
+        name: 'Please enter a valid name'
       }));
       return false;
     }
@@ -58,7 +58,7 @@ const Contact = () => {
     if (!namePattern.test(trimmedName)) {
       setErrorMessage((prev) => ({
         ...prev,
-        name: 'Name can only contain letters and spaces',
+        name: 'Name can only contain letters and spaces'
       }));
       return false;
     }
@@ -71,7 +71,7 @@ const Contact = () => {
     if (!emailRegex.test(email)) {
       setErrorMessage((prev) => ({
         ...prev,
-        email: 'Please enter a valid email address',
+        email: 'Please enter a valid email address'
       }));
       return false;
     }
@@ -83,7 +83,7 @@ const Contact = () => {
     if (!message.trim() || message.length < 10) {
       setErrorMessage((prev) => ({
         ...prev,
-        message: 'Message must be at least 10 characters long',
+        message: 'Message must be at least 10 characters long'
       }));
       return false;
     }
@@ -104,23 +104,23 @@ const Contact = () => {
         if (!isPhoneValid) {
           setErrorMessage((prev) => ({
             ...prev,
-            phone: 'Please enter a valid phone number',
+            phone: 'Please enter a valid phone number'
           }));
         }
         return;
       }
 
+      alert('heyy');
       setErrorMessage({ name: '', email: '', phone: '', message: '' });
-
       const { data } = await addContactForm({
         variables: {
           contactForm: {
             name: formData.name,
             email: formData.email,
             phone: formData.phone,
-            message: formData.message,
-          },
-        },
+            message: formData.message
+          }
+        }
       });
     } catch (err) {
       console.error('Failed to submit contact form:', err);

@@ -33,7 +33,7 @@ const MaterialInfo = () => {
           At Brothers Exterior Stucco, we pride ourselves on delivering
           exceptional quality and customer satisfaction in every exterior stucco
           project we undertake. Our unwavering commitment to excellence drives
-          us to utilize only the finest materials available. That's why we
+          us to utilize only the finest materials available. That is why we
           exclusively rely on industry-leading brands like ADEX and DuRock. By
           choosing us, you can trust that your project will be completed with
           precision and durability, ensuring not just a job well done, but a

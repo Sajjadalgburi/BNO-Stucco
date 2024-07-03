@@ -32,7 +32,7 @@ const AboutUs = () => {
           of experience and expertise to every project. By combining premium
           materials from trusted suppliers like ADEX and DuRock with
           personalized service and attention to detail, we ensure superior
-          results that enhance the aesthetic appeal and value of our clients'
+          results that enhance the aesthetic appeal and value of our clients
           properties. As a family-owned business, we are deeply committed to our
           community and strive to make a positive impact through our work and
           involvement. Choose Brothers Exterior Stucco for stucco solutions that

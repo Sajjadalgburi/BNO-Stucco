@@ -14,7 +14,7 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true,
+  introspection: true
 });
 
 // Define the startApolloServer function
@@ -46,7 +46,7 @@ const startApolloServer = async () => {
   } catch (error) {
     console.error(
       'Error starting the Apollo Server or connecting to the database:',
-      error,
+      error
     );
   }
 };
