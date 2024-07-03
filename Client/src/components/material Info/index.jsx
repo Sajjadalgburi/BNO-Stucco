@@ -1,8 +1,28 @@
-// this componenet is to display the information of material used at the company
+// this component is to display the information of material used at the company
 
+import { useState, useEffect } from 'react';
+// Import everything needed to use the `useQuery` hook
+import { useQuery } from '@apollo/client';
+import { GET_MATERIAL_IMAGES } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 
 const MaterialInfo = () => {
+  const { loading, error, data } = useQuery(GET_MATERIAL_IMAGES);
+
+  const [firstMaterialImage, setFirstMaterialImage] = useState(null);
+  const [secondMaterialImage, setSecondMaterialImage] = useState(null);
+
+  useEffect(() => {
+    if (data?.getMaterialImages && data?.getMaterialImages.length > 0) {
+      // storing specific material image in the state because each will have a unique url
+      setFirstMaterialImage(data?.getMaterialImages[0]);
+      setSecondMaterialImage(data?.getMaterialImages[1]);
+    }
+  }, [data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <div className="materialInfo my-28">
       <div className="description">
@@ -22,24 +42,29 @@ const MaterialInfo = () => {
       </div>
       {/* this is the gird for the images  */}
       <div className="imagesForMaterials grid grid-cols-1 md:grid-cols-2 gap-10 justify-center items-center mt-10">
-        <div className="durock" aria-label="Image for DuRock company">
-          <Link to={'https://durock.ca/'} target="_blank">
-            <img
-              src="/images/material-imgs/durock.png"
-              alt="DuRock Company"
-              className="max-w-xs md:max-w-md object-contain"
-            />
-          </Link>
-        </div>
-        <div className="adex" aria-label="Image for Adex company">
-          <Link to={'https://www.adex.ca/'} target="_blank">
-            <img
-              src="/images/material-imgs/adex.webp"
-              alt="Adex Company"
-              className="max-w-xs md:max-w-md object-contain"
-            />
-          </Link>
-        </div>
+        {firstMaterialImage && (
+          <div className="adex" aria-label="Image for Adex company">
+            <Link to={'https://www.adex.ca/'} target="_blank">
+              <img
+                src={`${firstMaterialImage.ImgURL}`}
+                alt="Adex Company"
+                className="max-w-xs md:max-w-md object-contain"
+              />
+            </Link>
+          </div>
+        )}
+
+        {secondMaterialImage && (
+          <div className="durock" aria-label="Image for DuRock company">
+            <Link to={'https://durock.ca/'} target="_blank">
+              <img
+                src={`${secondMaterialImage.ImgURL}`}
+                alt="DuRock Company"
+                className="max-w-xs md:max-w-md object-contain"
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
