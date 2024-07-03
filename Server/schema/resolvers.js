@@ -1,8 +1,15 @@
 const { ContactForm } = require('../models');
 const sendMail = require('../mail/mailer.js');
+const fetchImageFromFolder = require('../aws/AWS-S3-Bucket.js');
 
 // Define the resolvers for the mutations
 const resolvers = {
+  Query: {
+    getHeroImages: async () => fetchImageFromFolder('hero-img'),
+    getHouseImages: async () => fetchImageFromFolder('house-images'),
+    getMaterialImages: async () => fetchImageFromFolder('material-imgs'),
+  },
+
   Mutation: {
     // Mutation to create a contact form entry
     addContactForm: async (parent, { contactForm }) => {
