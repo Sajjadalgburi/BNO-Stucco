@@ -11,7 +11,7 @@ const ServicesProvided = () => {
 
   useEffect(() => {
     if (data && data.getHouseImages) {
-      const sliceData = data.getHouseImages.slice(0, 11);
+      const sliceData = data.getHouseImages.slice(0, 7);
       setHouseImages(sliceData);
     }
   }, [data]); // when the data loads from the backend, add it to the dependency array for every mount
