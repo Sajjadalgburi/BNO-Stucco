@@ -1,13 +1,24 @@
-const houseImages = [
-  'house11.jpg',
-  'house12.jpg',
-  'house13.jpg',
-  'house14.jpg',
-  'house15.jpg',
-  'house16.jpg',
-];
+import { useState, useEffect } from 'react';
+// Import everything needed to use the `useQuery` hook
+import { useQuery } from '@apollo/client';
+
+import { GET_HOUSE_IMAGES } from '../../utils/queries';
 
 const AboutUs = () => {
+  const { loading, error, data } = useQuery(GET_HOUSE_IMAGES);
+
+  const [houseImages, setHouseImages] = useState([]);
+
+  useEffect(() => {
+    if (data && data.getHouseImages) {
+      const sliceData = data.getHouseImages.slice(11);
+      setHouseImages(sliceData);
+    }
+  }, [data]); // when the data loads from the backend, add it to the dependency array for every mount
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <div id="about-us" className="aboutUs my-44">
       <div className="mainHeading">
@@ -31,10 +42,10 @@ const AboutUs = () => {
       </div>
 
       <div className="avatar flex flex-wrap justify-center items-center mt-10 gap-4">
-        {houseImages.map((image, index) => {
+        {houseImages.map((image, ETag) => {
           return (
-            <div className="w-96 rounded m-2  flex-shrink" key={index}>
-              <img src={`/images/house-images/${image}`} alt="house image" />
+            <div className="w-96 rounded m-2  flex-shrink" key={ETag}>
+              <img src={`${image.ImgURL}`} alt="house image" />
             </div>
           );
         })}
