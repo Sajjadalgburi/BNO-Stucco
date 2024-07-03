@@ -4,31 +4,21 @@
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
     "format": "prettier --write .",
     "start": "node Server --ignore Client",
     "dev": "concurrently \"cd Server && npm run watch\" \"cd Client && npm run dev\"",
     "install": "cd Server && npm i && cd ../Client && npm i",
     "seed": "cd Server && npm run seed",
     "build": "cd Client && npm run build",
-    "render-build": "cd Server && npm i && cd ../Client && npm i && npm run build"
+    "render-build": "cd Server && npm i && cd ../Client && npm i && npm run build",
+    "lintFiles": "concurrently \"cd Server && npm run lint\" \"cd Client && npm run lint\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.3.0",
     "concurrently": "^5.3.0",
     "dotenv": "^16.4.5",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.34.1",
     "globals": "^15.3.0",
     "prettier": "^3.2.5"
   }
